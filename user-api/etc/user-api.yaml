@@ -1,0 +1,14 @@
+Name: user-api
+Host: 0.0.0.0
+Port: 8888
+
+mysqlConfig:
+  dsn: "root:root@tcp(127.0.0.1:3306)/blog_demo?charset=utf8mb4&parseTime=True&loc=Local"
+  maxIdleConns: 10
+  maxOpenConns: 100
+  connectTimeout: 10
+
+# JWT 配置
+jwt: 
+  secretKey: "dgdDFGDGow235!~.gD34nlk&GD*Dsdoin3j4l5"  # 签名密钥
+  expirationTime: 24h  # 令牌有效期（支持 h/m/s 单位）
