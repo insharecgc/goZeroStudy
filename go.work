@@ -1,0 +1,8 @@
+go 1.25.2
+
+use (
+	./grpc-server
+	./grpc-client
+	./hello01
+	./user-api
+)
