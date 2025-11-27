@@ -23,3 +23,9 @@ type RegisterResp struct {
 	Code int    `json:"code"`
 	Msg  string `json:"msg"`
 }
+
+type RestResponse struct {
+	Code int         `json:"code"`
+	Msg  string      `json:"msg"`
+	Data interface{} `json:"data"`
+}

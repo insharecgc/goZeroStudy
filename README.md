@@ -48,3 +48,31 @@ go run hello01.go -f ./hello01-api.toml
 go get github.com/go-sql-driver/mysql
 goctl model mysql ddl --src ./internal/model/user.sql --dir ./internal/model
 ```
+
+
+## grpc
+```
+生成proto文件
+goctl rpc -o greet.proto
+
+用proto文件生成rpc相关文件
+goctl rpc protoc greet.proto --go_out=./grpc-server --go-grpc_out=./grpc-server --zrpc_out=./grpc-server
+```
+
+grpcurl工具下载
+```
+https://github.com/fullstorydev/grpcurl/releases 
+
+获取grpc服务列表 --plaintext选项代表适用http链接
+grpcurl -plaintext localhost:8080 list
+
+获取服务细节 或者 方法细节
+grpcurl -plaintext localhost:8080 describe
+
+调用方法
+grpcurl -d {\"ping\":\"ping1\"} -plaintext localhost:8080 greet.Greet/Ping
+
+也可以先启动命令，然后再输入输出，参数输入完后Windows下Ctrl+z(其他系统一般ctrl+d)结束输入，返回结果
+grpcurl -d @ -plaintext localhost:8080 greet.Greet/Ping
+{"ping":"myping"}
+```

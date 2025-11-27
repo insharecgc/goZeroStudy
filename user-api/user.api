@@ -21,9 +21,16 @@ type LoginResp {
 	Token string `json:"token"`
 }
 
+type RestResponse {
+	Code int         `json:"code"`
+	Msg  string      `json:"msg"`
+	Data interface{} `json:"data"`
+}
+
 @server (
 	// 当前service的代码会放在user目录下
 	group: user
+	cors:  true // 跨域
 	// 路由前缀
 	prefix: /api/v1
 )
@@ -33,5 +40,8 @@ service user-api {
 
 	@handler LoginHandler
 	post /user/login (LoginReq) returns (LoginResp)
+
+	@handler userInfo
+	get /user/getUserInfo returns (RestResponse)
 }
 
